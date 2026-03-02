@@ -35,9 +35,8 @@ function AnimateOnScroll({
   return (
     <div
       ref={ref}
-      className={`${className} transition-all duration-700 ease-out ${
-        isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
-      }`}
+      className={`${className} transition-all duration-700 ease-out ${isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
+        }`}
       style={{ transitionDelay: `${delay}ms` }}
     >
       {children}
@@ -93,11 +92,10 @@ export function ProjectsGrid() {
               <button
                 key={f.value}
                 onClick={() => setFilter(f.value)}
-                className={`flex items-center gap-1.5 px-4 py-2 rounded-lg text-sm font-medium transition-all duration-300 font-sans ${
-                  filter === f.value
+                className={`flex items-center gap-1.5 px-4 py-2 rounded-lg text-sm font-medium transition-all duration-300 font-sans ${filter === f.value
                     ? "bg-primary text-primary-foreground"
                     : "text-muted-foreground hover:text-foreground"
-                }`}
+                  }`}
               >
                 {f.icon}
                 {f.label}
@@ -153,7 +151,11 @@ export function ProjectsGrid() {
                         {project.title}
                       </h3>
                       <div className="flex items-center gap-1">
-                        <Star className="w-3 h-3 text-primary fill-primary" />
+                        {
+                          project.rating && (
+                            <Star className="w-3 h-3 text-primary fill-primary" />
+                          )
+                        }
                         <span className="text-xs text-muted-foreground font-sans">
                           {project.rating}
                         </span>

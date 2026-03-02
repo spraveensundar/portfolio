@@ -1,7 +1,7 @@
 "use client"
 
 import { useRef, useEffect, useState, type ReactNode } from "react"
-import { Code2, Layers, Zap, Palette, Globe, Monitor } from "lucide-react"
+import { Code2, Layers, Zap, Globe, Monitor, Link } from "lucide-react"
 
 function AnimateOnScroll({
   children,
@@ -32,9 +32,8 @@ function AnimateOnScroll({
   return (
     <div
       ref={ref}
-      className={`${className} transition-all duration-700 ease-out ${
-        isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
-      }`}
+      className={`${className} transition-all duration-700 ease-out ${isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
+        }`}
       style={{ transitionDelay: `${delay}ms` }}
     >
       {children}
@@ -44,40 +43,40 @@ function AnimateOnScroll({
 
 const services = [
   {
-    icon: <Code2 className="w-6 h-6" />,
-    title: "Native Development",
-    description:
-      "High-performance native apps for iOS (Swift) and Android (Kotlin) with platform-specific design patterns.",
-  },
-  {
     icon: <Layers className="w-6 h-6" />,
     title: "Cross-Platform",
     description:
-      "Build once, deploy everywhere. Flutter and React Native apps with shared codebases and native feel.",
+      "Developing cross-platform mobile applications using React Native with shared codebases, consistent UI, and near-native performance.",
   },
   {
     icon: <Globe className="w-6 h-6" />,
     title: "Web Design",
     description:
-      "Beautiful, responsive websites and web applications. From landing pages to full SaaS dashboards with modern frameworks.",
+      "Designing modern, responsive websites and web applications with clean layouts and seamless user experience.",
   },
   {
     icon: <Monitor className="w-6 h-6" />,
     title: "Frontend Development",
     description:
-      "Pixel-perfect responsive web interfaces built with React, Next.js, and Tailwind CSS for fast, accessible experiences.",
+      "Creating responsive web interfaces using React, React Native, TypeScript, and Tailwind CSS with focus on performance and accessibility.",
   },
   {
     icon: <Zap className="w-6 h-6" />,
     title: "API Integration",
     description:
-      "Seamless REST and GraphQL integration, real-time data sync, push notifications, and backend services.",
+      "Integrating REST APIs, WebSockets, real-time data, authentication, push notifications, state management and backend services into mobile and web applications.",
   },
   {
-    icon: <Palette className="w-6 h-6" />,
-    title: "UI/UX Design",
+    icon: <Link className="w-6 h-6" />,
+    title: "Blockchain / Trading Platform",
     description:
-      "Complete design workflows from wireframes to high-fidelity prototypes following Material Design and HIG principles.",
+      "Building crypto trading applications with real-time trading UI, TradingView chart integrations, copy trading, algo trading features, and NFT wallet support.",
+  },
+  {
+    icon: <Code2 className="w-6 h-6" />,
+    title: "Native Development",
+    description:
+      "Building high-performance Android applications using Kotlin with modern architecture, scalable structure, and smooth user experience.",
   },
 ]
 
@@ -85,7 +84,7 @@ export function AboutSection() {
   return (
     <section id="about" className="py-24 px-6">
       <div className="max-w-6xl mx-auto">
-        <AnimateOnScroll className="text-center mb-16">
+        <AnimateOnScroll className="text-center mb-10">
           <span className="text-xs font-medium text-primary font-mono tracking-wider uppercase">
             What I Do
           </span>
@@ -94,8 +93,7 @@ export function AboutSection() {
             <span className="text-primary"> Digital Experiences</span>
           </h2>
           <p className="mt-4 text-muted-foreground max-w-2xl mx-auto leading-relaxed font-sans text-pretty">
-            I specialize in building mobile applications and designing beautiful websites
-            from concept to launch, ensuring every pixel is crafted and every interaction is smooth.
+            I create user-friendly mobile applications and modern websites, focusing on performance, clean UI, and seamless user experience.
           </p>
         </AnimateOnScroll>
 

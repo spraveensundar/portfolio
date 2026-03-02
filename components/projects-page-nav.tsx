@@ -15,11 +15,10 @@ export function ProjectsPageNav() {
 
   return (
     <nav
-      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${
-        scrolled
+      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${scrolled
           ? "bg-background/80 backdrop-blur-xl border-b border-border"
           : "bg-transparent"
-      }`}
+        }`}
     >
       <div className="mx-auto max-w-6xl px-6 py-4 flex items-center justify-between">
         <Link href="/" className="flex items-center gap-2 group">
@@ -27,7 +26,7 @@ export function ProjectsPageNav() {
             <Smartphone className="w-5 h-5 text-primary-foreground" />
           </div>
           <span className="text-lg font-bold text-foreground font-sans tracking-tight">
-            Dev<span className="text-primary">Folio</span>
+            Praveen<span className="text-primary">Sundar</span>
           </span>
         </Link>
 

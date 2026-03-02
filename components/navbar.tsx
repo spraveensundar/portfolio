@@ -24,11 +24,10 @@ export function Navbar() {
 
   return (
     <nav
-      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${
-        scrolled
-          ? "bg-background/80 backdrop-blur-xl border-b border-border"
-          : "bg-transparent"
-      }`}
+      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${scrolled
+        ? "bg-background/80 backdrop-blur-xl border-b border-border"
+        : "bg-transparent"
+        }`}
     >
       <div className="mx-auto max-w-6xl px-6 py-4 flex items-center justify-between">
         <a href="#home" className="flex items-center gap-2.5 group">
@@ -36,10 +35,10 @@ export function Navbar() {
             <Code2 className="w-5 h-5 text-primary-foreground" />
           </div>
           <div className="flex flex-col leading-none">
-            <span className="text-sm font-bold text-foreground font-sans tracking-tight">
+            <span className="text-2xl font-bold text-foreground font-sans tracking-tight">
               Praveen
             </span>
-            <span className="text-[10px] font-medium text-primary font-mono tracking-widest uppercase">
+            <span className="text-[12px] font-medium text-primary font-mono tracking-widest uppercase">
               Sundar
             </span>
           </div>

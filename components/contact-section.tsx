@@ -1,7 +1,7 @@
 "use client"
 
 import { useRef, useEffect, useState, type ReactNode } from "react"
-import { Mail, MapPin, Phone, Send, Github, Linkedin, Twitter } from "lucide-react"
+import { Mail, MapPin, Phone, Send, Github, Linkedin, Instagram } from "lucide-react"
 
 function AnimateOnScroll({ children, className = "" }: { children: ReactNode; className?: string }) {
   const ref = useRef<HTMLDivElement>(null)
@@ -24,9 +24,8 @@ function AnimateOnScroll({ children, className = "" }: { children: ReactNode; cl
   return (
     <div
       ref={ref}
-      className={`${className} transition-all duration-700 ${
-        isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
-      }`}
+      className={`${className} transition-all duration-700 ${isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
+        }`}
     >
       {children}
     </div>
@@ -44,11 +43,12 @@ export function ContactSection() {
             Get in Touch
           </span>
           <h2 className="mt-3 text-3xl sm:text-4xl font-bold text-foreground font-sans text-balance">
-            {"Let's Build Something"} <span className="text-primary">Amazing</span>
+            {"Let’s Start a "} <span className="text-primary">Conversation</span>
           </h2>
           <p className="mt-4 text-muted-foreground max-w-2xl mx-auto leading-relaxed font-sans text-pretty">
-            Have a mobile app idea or need a stunning website? I would love to help bring it to life.
-            Reach out and let us discuss your project.
+
+
+            Feel free to reach out — always happy to connect and have a conversation.
           </p>
         </AnimateOnScroll>
 
@@ -60,20 +60,20 @@ export function ContactSection() {
                 {
                   icon: <Mail className="w-5 h-5" />,
                   label: "Email",
-                  value: "hello@devfolio.app",
-                  href: "mailto:hello@devfolio.app",
+                  value: "praveensundar.dev@gmail.com",
+                  href: "mailto:praveensundar.dev@gmail.com",
                 },
                 {
                   icon: <Phone className="w-5 h-5" />,
                   label: "Phone",
-                  value: "+1 (555) 123-4567",
-                  href: "tel:+15551234567",
+                  value: "+91 9361299044",
+                  href: "tel:+919361299044",
                 },
                 {
                   icon: <MapPin className="w-5 h-5" />,
                   label: "Location",
-                  value: "San Francisco, CA",
-                  href: "#",
+                  value: "Tenkasi, Tamil Nadu, India",
+                  href: "https://maps.google.com/?q=Tenkasi,Tamil Nadu,India",
                 },
               ].map((item) => (
                 <a
@@ -94,9 +94,9 @@ export function ContactSection() {
               {/* Social Links */}
               <div className="flex items-center gap-3 mt-2">
                 {[
-                  { icon: <Github className="w-5 h-5" />, href: "#", label: "GitHub" },
-                  { icon: <Linkedin className="w-5 h-5" />, href: "#", label: "LinkedIn" },
-                  { icon: <Twitter className="w-5 h-5" />, href: "#", label: "Twitter" },
+                  { icon: <Github className="w-5 h-5" />, href: "https://github.com/spraveensundar", label: "GitHub" },
+                  { icon: <Linkedin className="w-5 h-5" />, href: "https://www.linkedin.com/in/praveen-sundar-s", label: "LinkedIn" },
+                  { icon: <Instagram className="w-5 h-5" />, href: "https://www.instagram.com/praveen_sundars", label: "Twitter" },
                 ].map((social) => (
                   <a
                     key={social.label}
@@ -120,17 +120,21 @@ export function ContactSection() {
                 </div>
                 <h3 className="text-lg font-semibold text-foreground font-sans">Message Sent!</h3>
                 <p className="mt-2 text-sm text-muted-foreground font-sans">
-                  Thank you for reaching out. I will get back to you within 24 hours.
+                  Thanks for contacting me. I appreciate your message and will respond soon.
                 </p>
               </div>
             ) : (
               <form
-                onSubmit={(e) => {
-                  e.preventDefault()
+                action="https://formsubmit.co/praveensundar.dev@gmail.com"
+                method="POST"
+                onSubmit={() => {
                   setSubmitted(true)
                 }}
                 className="flex flex-col gap-4"
               >
+                <input type="hidden" name="_captcha" value="false" />
+                <input type="hidden" name="_subject" value="New Portfolio Message" />
+                <input type="hidden" name="_template" value="table" />
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                   <div>
                     <label htmlFor="name" className="text-xs text-muted-foreground mb-1.5 block font-sans">
@@ -138,6 +142,7 @@ export function ContactSection() {
                     </label>
                     <input
                       id="name"
+                      name="name"
                       type="text"
                       required
                       placeholder="John Doe"
@@ -150,7 +155,9 @@ export function ContactSection() {
                     </label>
                     <input
                       id="email"
+                      name="email"
                       type="email"
+                      pattern="^[^\s@]+@[^\s@]+\.[^\s@]+$"
                       required
                       placeholder="john@example.com"
                       className="w-full px-4 py-3 rounded-xl bg-card border border-border text-foreground text-sm placeholder:text-muted-foreground/50 focus:outline-none focus:border-primary/50 transition-colors font-sans"
@@ -158,53 +165,22 @@ export function ContactSection() {
                   </div>
                 </div>
                 <div>
-                  <label htmlFor="subject" className="text-xs text-muted-foreground mb-1.5 block font-sans">
-                    Project Type
-                  </label>
-                  <select
-                    id="subject"
-                    className="w-full px-4 py-3 rounded-xl bg-card border border-border text-foreground text-sm focus:outline-none focus:border-primary/50 transition-colors font-sans"
-                  >
-                    <option value="">Select a project type</option>
-                    <option value="ios">iOS App Development</option>
-                    <option value="android">Android App Development</option>
-                    <option value="cross">Cross-Platform App</option>
-                    <option value="web">Website Design & Development</option>
-                    <option value="saas">SaaS / Web App</option>
-                    <option value="design">UI/UX Design</option>
-                    <option value="other">Other</option>
-                  </select>
-                </div>
-                <div>
-                  <label htmlFor="budget" className="text-xs text-muted-foreground mb-1.5 block font-sans">
-                    Budget Range
-                  </label>
-                  <select
-                    id="budget"
-                    className="w-full px-4 py-3 rounded-xl bg-card border border-border text-foreground text-sm focus:outline-none focus:border-primary/50 transition-colors font-sans"
-                  >
-                    <option value="">Select budget range</option>
-                    <option value="5k">$5K - $10K</option>
-                    <option value="10k">$10K - $25K</option>
-                    <option value="25k">$25K - $50K</option>
-                    <option value="50k">$50K+</option>
-                  </select>
-                </div>
-                <div>
                   <label htmlFor="message" className="text-xs text-muted-foreground mb-1.5 block font-sans">
-                    Project Details
+                    Message
                   </label>
                   <textarea
                     id="message"
-                    rows={4}
+                    name="message"
+                    rows={6}
                     required
-                    placeholder="Tell me about your project..."
+                    placeholder="Write your message..."
                     className="w-full px-4 py-3 rounded-xl bg-card border border-border text-foreground text-sm placeholder:text-muted-foreground/50 focus:outline-none focus:border-primary/50 transition-colors resize-none font-sans"
                   />
                 </div>
                 <button
                   type="submit"
                   className="flex items-center justify-center gap-2 w-full px-6 py-3.5 rounded-xl bg-primary text-primary-foreground font-medium text-sm hover:opacity-90 transition-opacity"
+                  disabled={submitted}
                 >
                   <Send className="w-4 h-4" />
                   Send Message

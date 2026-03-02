@@ -16,7 +16,16 @@ import {
   Trophy,
   ChevronRight,
 } from "lucide-react"
-import { type Project, projects } from "@/lib/projects-data"
+import { type Project, projects } from "@/lib/projects-data";
+
+const platformIcons = {
+  android: "/icon/android.png",
+  ios: "/icon/ios.png",
+  website: "/icon/web.png",
+  github: "/icon/github.png",
+} as const;
+
+type PlatformKey = keyof typeof platformIcons;
 
 function AnimateOnScroll({
   children,
@@ -47,9 +56,8 @@ function AnimateOnScroll({
   return (
     <div
       ref={ref}
-      className={`${className} transition-all duration-700 ease-out ${
-        isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
-      }`}
+      className={`${className} transition-all duration-700 ease-out ${isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
+        }`}
       style={{ transitionDelay: `${delay}ms` }}
     >
       {children}
@@ -113,31 +121,65 @@ export function ProjectDetail({ project }: { project: Project }) {
         {/* Meta Info Bar */}
         <AnimateOnScroll delay={200}>
           <div className="grid grid-cols-2 sm:grid-cols-4 gap-4 mb-12">
-            {[
-              { icon: <Calendar className="w-4 h-4 text-primary" />, label: "Year", value: project.year },
-              { icon: <Clock className="w-4 h-4 text-primary" />, label: "Duration", value: project.duration },
-              { icon: <Building2 className="w-4 h-4 text-primary" />, label: "Client", value: project.client },
-              {
-                icon: project.platform === "mobile"
-                  ? <Download className="w-4 h-4 text-primary" />
-                  : <Star className="w-4 h-4 text-primary fill-primary" />,
-                label: project.platform === "mobile" ? "Downloads" : "Rating",
-                value: project.platform === "mobile" ? project.downloads : `${project.rating} / 5`,
-              },
-            ].map((item) => (
-              <div
-                key={item.label}
-                className="flex items-center gap-3 p-4 rounded-xl bg-card border border-border"
-              >
-                <div className="flex items-center justify-center w-9 h-9 rounded-lg bg-primary/10">
-                  {item.icon}
-                </div>
-                <div>
-                  <p className="text-xs text-muted-foreground font-sans">{item.label}</p>
-                  <p className="text-sm font-semibold text-foreground font-sans">{item.value}</p>
-                </div>
-              </div>
-            ))}
+            {
+              project?.live ?
+                (
+                  <>
+                    {[
+                      { icon: <Calendar className="w-4 h-4 text-primary" />, label: "Year", value: project.year },
+                      { icon: <Clock className="w-4 h-4 text-primary" />, label: "Duration", value: project.duration },
+                      {
+                        icon: project.platform === "mobile"
+                          ? <Download className="w-4 h-4 text-primary" />
+                          : <Star className="w-4 h-4 text-primary fill-primary" />,
+                        label: project.platform === "mobile" ? "Downloads" : "Rating",
+                        value: project.platform === "mobile" ? project.downloads : `${project.rating} / 5`,
+                      },
+                    ].map((item) => (
+                      <div
+                        key={item.label}
+                        className="flex items-center gap-3 p-4 rounded-xl bg-card border border-border"
+                      >
+                        <div className="flex items-center justify-center w-9 h-9 rounded-lg bg-primary/10">
+                          {item.icon}
+                        </div>
+                        <div>
+                          <p className="text-xs text-muted-foreground font-sans">{item.label}</p>
+                          <p className="text-sm font-semibold text-foreground font-sans">{item.value}</p>
+                        </div>
+                      </div>
+                    ))}
+
+                  </>
+                ) : (
+                  null
+                )
+            }
+            <div className="flex items-center gap-6 p-4 w-fit">
+              {(Object.keys(platformIcons) as PlatformKey[]).map((key) => {
+                const url = project[key];
+                if (!url) return null;
+                return (
+                  <a
+                    key={key}
+                    href={url}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="w-9 h-9 flex items-center justify-center 
+                            hover:scale-110 hover:-translate-y-1
+                            transition-all duration-300"
+                  >
+                    <Image
+                      src={platformIcons[key]}
+                      alt={`${key} icon`}
+                      width={36}
+                      height={36}
+                      className="object-contain"
+                    />
+                  </a>
+                );
+              })}
+            </div>
           </div>
         </AnimateOnScroll>
 
@@ -166,15 +208,19 @@ export function ProjectDetail({ project }: { project: Project }) {
                   </span>
                 ))}
               </div>
-              <div className="mt-6 flex items-center gap-2">
-                <Star className="w-4 h-4 text-primary fill-primary" />
-                <span className="text-sm font-semibold text-foreground font-sans">
-                  {project.rating}
-                </span>
-                <span className="text-sm text-muted-foreground font-sans">
-                  rating
-                </span>
-              </div>
+              {
+                project.rating && (
+                  <div className="mt-6 flex items-center gap-2">
+                    <Star className="w-4 h-4 text-primary fill-primary" />
+                    <span className="text-sm font-semibold text-foreground font-sans">
+                      {project.rating}
+                    </span>
+                    <span className="text-sm text-muted-foreground font-sans">
+                      rating
+                    </span>
+                  </div>
+                )
+              }
             </div>
           </div>
         </AnimateOnScroll>
@@ -204,51 +250,59 @@ export function ProjectDetail({ project }: { project: Project }) {
             </div>
           </AnimateOnScroll>
 
-          <AnimateOnScroll delay={200}>
-            <div className="rounded-2xl bg-card border border-border p-6 h-full">
-              <div className="flex items-center gap-2 mb-5">
-                <div className="flex items-center justify-center w-8 h-8 rounded-lg bg-primary/10">
-                  <Zap className="w-4 h-4 text-primary" />
+          {
+            project.challenges?.length > 0 && (
+              <AnimateOnScroll delay={200}>
+                <div className="rounded-2xl bg-card border border-border p-6 h-full">
+                  <div className="flex items-center gap-2 mb-5">
+                    <div className="flex items-center justify-center w-8 h-8 rounded-lg bg-primary/10">
+                      <Zap className="w-4 h-4 text-primary" />
+                    </div>
+                    <h3 className="text-base font-bold text-foreground font-sans">
+                      Challenges
+                    </h3>
+                  </div>
+                  <ul className="flex flex-col gap-3">
+                    {project.challenges.map((challenge, i) => (
+                      <li key={i} className="flex items-start gap-2.5">
+                        <span className="mt-1.5 w-1.5 h-1.5 rounded-full bg-primary shrink-0" />
+                        <span className="text-sm text-muted-foreground leading-relaxed font-sans">
+                          {challenge}
+                        </span>
+                      </li>
+                    ))}
+                  </ul>
                 </div>
-                <h3 className="text-base font-bold text-foreground font-sans">
-                  Challenges
-                </h3>
-              </div>
-              <ul className="flex flex-col gap-3">
-                {project.challenges.map((challenge, i) => (
-                  <li key={i} className="flex items-start gap-2.5">
-                    <span className="mt-1.5 w-1.5 h-1.5 rounded-full bg-primary shrink-0" />
-                    <span className="text-sm text-muted-foreground leading-relaxed font-sans">
-                      {challenge}
-                    </span>
-                  </li>
-                ))}
-              </ul>
-            </div>
-          </AnimateOnScroll>
+              </AnimateOnScroll>
+            )
+          }
+          {
+            project.results?.length > 0 && (
+              <AnimateOnScroll delay={300}>
+                <div className="rounded-2xl bg-card border border-border p-6 h-full">
+                  <div className="flex items-center gap-2 mb-5">
+                    <div className="flex items-center justify-center w-8 h-8 rounded-lg bg-primary/10">
+                      <Trophy className="w-4 h-4 text-primary" />
+                    </div>
+                    <h3 className="text-base font-bold text-foreground font-sans">
+                      Results
+                    </h3>
+                  </div>
+                  <ul className="flex flex-col gap-3">
+                    {project.results.map((result, i) => (
+                      <li key={i} className="flex items-start gap-2.5">
+                        <span className="mt-1.5 w-1.5 h-1.5 rounded-full bg-primary shrink-0" />
+                        <span className="text-sm text-muted-foreground leading-relaxed font-sans">
+                          {result}
+                        </span>
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+              </AnimateOnScroll>
+            )
+          }
 
-          <AnimateOnScroll delay={300}>
-            <div className="rounded-2xl bg-card border border-border p-6 h-full">
-              <div className="flex items-center gap-2 mb-5">
-                <div className="flex items-center justify-center w-8 h-8 rounded-lg bg-primary/10">
-                  <Trophy className="w-4 h-4 text-primary" />
-                </div>
-                <h3 className="text-base font-bold text-foreground font-sans">
-                  Results
-                </h3>
-              </div>
-              <ul className="flex flex-col gap-3">
-                {project.results.map((result, i) => (
-                  <li key={i} className="flex items-start gap-2.5">
-                    <span className="mt-1.5 w-1.5 h-1.5 rounded-full bg-primary shrink-0" />
-                    <span className="text-sm text-muted-foreground leading-relaxed font-sans">
-                      {result}
-                    </span>
-                  </li>
-                ))}
-              </ul>
-            </div>
-          </AnimateOnScroll>
         </div>
 
         {/* Prev / Next Navigation */}

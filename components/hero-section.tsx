@@ -79,7 +79,7 @@ export function HeroSection() {
   const containerRef = useRef<HTMLDivElement>(null)
   const [isLoaded, setIsLoaded] = useState(false)
   const typedText = useTypewriter(
-    ["Mobile Apps", "iOS Apps", "Android Apps", "Web Designs", "Flutter Apps", "React Native Apps", "Websites"],
+    ["Mobile Apps", "iOS Apps", "Android Apps", "Web Designs", "React Native Apps", "Websites"],
     80,
     50,
     1800
@@ -162,9 +162,8 @@ export function HeroSection() {
         <div className="flex-1 text-center lg:text-left">
           {/* Available badge */}
           <div
-            className={`inline-flex items-center gap-2 px-4 py-2 rounded-full border mb-6 transition-all duration-700 ${
-              isLoaded ? "opacity-100 translate-y-0" : "opacity-0 translate-y-6"
-            }`}
+            className={`inline-flex items-center gap-2 px-4 py-2 rounded-full border mb-6 transition-all duration-700 ${isLoaded ? "opacity-100 translate-y-0" : "opacity-0 translate-y-6"
+              }`}
             style={{
               backgroundColor: "oklch(0.75 0.18 175 / 0.1)",
               borderColor: "oklch(0.75 0.18 175 / 0.2)",
@@ -181,9 +180,8 @@ export function HeroSection() {
           </div>
 
           <h1
-            className={`text-4xl sm:text-5xl lg:text-7xl font-bold text-foreground leading-[1.1] font-sans transition-all duration-700 ${
-              isLoaded ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
-            }`}
+            className={`text-4xl sm:text-5xl lg:text-7xl font-bold text-foreground leading-[1.1] font-sans transition-all duration-700 ${isLoaded ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
+              }`}
             style={{ transitionDelay: "350ms" }}
           >
             <span className="block text-balance">I Build</span>
@@ -195,20 +193,19 @@ export function HeroSection() {
           </h1>
 
           <p
-            className={`mt-6 text-base sm:text-lg text-muted-foreground max-w-xl mx-auto lg:mx-0 leading-relaxed font-sans text-pretty transition-all duration-700 ${
-              isLoaded ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
-            }`}
+            className={`mt-6 text-base sm:text-lg text-muted-foreground max-w-xl mx-auto lg:mx-0 leading-relaxed font-sans text-pretty transition-all duration-700 ${isLoaded ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
+              }`}
             style={{ transitionDelay: "500ms" }}
           >
-            Specialized in crafting high-performance mobile applications
-            and stunning web designs with seamless UX and clean architecture. From concept to launch.
+            {/* Specialized in crafting high-performance mobile applications
+            and stunning web designs with seamless UX and clean architecture. From concept to launch. */}
+            Building high-performance mobile apps and modern web experiences with seamless UX and clean architecture.
           </p>
 
           {/* CTA Buttons */}
           <div
-            className={`mt-8 flex flex-col sm:flex-row items-center gap-4 justify-center lg:justify-start transition-all duration-700 ${
-              isLoaded ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
-            }`}
+            className={`mt-8 flex flex-col sm:flex-row items-center gap-4 justify-center lg:justify-start transition-all duration-700 ${isLoaded ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
+              }`}
             style={{ transitionDelay: "650ms" }}
           >
             <a
@@ -222,7 +219,11 @@ export function HeroSection() {
               <span className="absolute inset-0 bg-foreground/10 scale-x-0 group-hover:scale-x-100 transition-transform duration-500 origin-left" />
             </a>
             <a
-              href="#contact"
+              href="/cv/praveen-sundar-cv.pdf" download
+              onClick={() => {
+                const audio = new Audio("/sounds/click.mp3");
+                audio.play();
+              }}
               className="flex items-center gap-2 px-7 py-3.5 rounded-xl border border-border text-foreground hover:border-primary/50 hover:text-primary transition-all duration-300 text-sm"
             >
               <Download className="w-4 h-4" />
@@ -232,23 +233,22 @@ export function HeroSection() {
 
           {/* Stats */}
           <div
-            className={`mt-12 flex items-center gap-8 justify-center lg:justify-start transition-all duration-700 ${
-              isLoaded ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
-            }`}
+            className={`mt-12 flex items-center gap-8 justify-center lg:justify-start transition-all duration-700 ${isLoaded ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
+              }`}
             style={{ transitionDelay: "800ms" }}
           >
             <div className="text-center lg:text-left">
               <AnimatedCounter target={50} suffix="+" />
-              <div className="text-xs text-muted-foreground mt-1 font-sans">Apps Built</div>
+              <div className="text-xs text-muted-foreground mt-1 font-sans">Apps & Web</div>
             </div>
             <div className="w-px h-10 bg-border" />
             <div className="text-center lg:text-left">
-              <AnimatedCounter target={4} suffix=".9" />
+              <AnimatedCounter target={4} suffix="" />
               <div className="text-xs text-muted-foreground mt-1 font-sans">Avg Rating</div>
             </div>
             <div className="w-px h-10 bg-border" />
             <div className="text-center lg:text-left">
-              <AnimatedCounter target={5} suffix="yr" />
+              <AnimatedCounter target={1} suffix="+ Yr" />
               <div className="text-xs text-muted-foreground mt-1 font-sans">Experience</div>
             </div>
           </div>
@@ -256,9 +256,8 @@ export function HeroSection() {
 
         {/* Right: Avatar with animated ring */}
         <div
-          className={`flex-shrink-0 transition-all duration-1000 ${
-            isLoaded ? "opacity-100 scale-100" : "opacity-0 scale-90"
-          }`}
+          className={`flex-shrink-0 transition-all duration-1000 ${isLoaded ? "opacity-100 scale-100" : "opacity-0 scale-90"
+            }`}
           style={{ transitionDelay: "400ms" }}
         >
           <div className="relative" data-avatar>
@@ -269,7 +268,7 @@ export function HeroSection() {
             {/* Avatar image */}
             <div className="relative w-64 h-64 sm:w-72 sm:h-72 lg:w-80 lg:h-80 rounded-3xl overflow-hidden border-2 border-primary/30 animate-pulse-glow">
               <Image
-                src="/images/avatar.jpg"
+                src="/images/avatar.jpeg"
                 alt="Mobile app developer animated portrait"
                 width={320}
                 height={320}
@@ -287,10 +286,10 @@ export function HeroSection() {
 
             {/* Floating badges */}
             <div className="absolute -bottom-4 -right-4 px-4 py-2.5 rounded-xl bg-card border border-border shadow-lg animate-float" style={{ animationDelay: "0.5s" }}>
-              <span className="text-xs font-medium text-primary font-mono">Flutter / Swift</span>
+              <span className="text-xs font-medium text-primary font-mono">Android / iOS</span>
             </div>
             <div className="absolute -top-3 -left-3 px-3 py-2 rounded-lg bg-card border border-border shadow-lg animate-float" style={{ animationDelay: "1.5s" }}>
-              <span className="text-xs font-medium text-primary font-mono">React Native</span>
+              <span className="text-xs font-medium text-primary font-mono">Web Design</span>
             </div>
 
             {/* Status dot */}
@@ -307,9 +306,8 @@ export function HeroSection() {
 
       {/* Scroll indicator */}
       <div
-        className={`absolute bottom-10 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 transition-all duration-700 ${
-          isLoaded ? "opacity-100 translate-y-0" : "opacity-0 translate-y-4"
-        }`}
+        className={`absolute bottom-10 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 transition-all duration-700 ${isLoaded ? "opacity-100 translate-y-0" : "opacity-0 translate-y-4"
+          }`}
         style={{ transitionDelay: "1200ms" }}
       >
         <span className="text-xs text-muted-foreground font-sans">Scroll Down</span>
@@ -317,6 +315,6 @@ export function HeroSection() {
           <div className="w-1 h-2 rounded-full bg-primary animate-bounce" />
         </div>
       </div>
-    </section>
+    </section >
   )
 }

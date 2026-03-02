@@ -32,9 +32,8 @@ function AnimateOnScroll({
   return (
     <div
       ref={ref}
-      className={`${className} transition-all duration-700 ease-out ${
-        isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
-      }`}
+      className={`${className} transition-all duration-700 ease-out ${isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
+        }`}
       style={{ transitionDelay: `${delay}ms` }}
     >
       {children}
@@ -55,69 +54,78 @@ function TimelineConnector({ isVisible }: { isVisible: boolean }) {
 
 const experiences = [
   {
-    company: "TechNova Solutions",
-    role: "Senior Mobile & Web Developer",
-    period: "2023 - Present",
-    location: "San Francisco, CA",
+    company: "Maticz Technologies",
+    role: "Mobile Application Developer",
+    period: "Jul 2025 – Present",
+    location: "Madurai, Tamil Nadu",
     type: "Full-time",
     description:
-      "Leading the mobile and web development team, architecting cross-platform applications with Flutter and React Native, and building responsive web platforms. Shipped 12+ apps to production with 4.8+ avg store ratings.",
+      "Contributing to the development of scalable fintech and real-time mobile applications using React Native and TypeScript, including trading platforms and service apps with advanced trading interfaces, API integrations, real-time chat using WebSockets, notifications, and map-based user interactions.",
     highlights: [
-      "Led a team of 6 developers across mobile and web projects",
-      "Built a fintech app serving 500K+ active users",
-      "Designed and developed responsive SaaS dashboards",
-      "Reduced app crash rate by 85% through architecture overhaul",
+      "Worked on KYC and core app modules",
+      "Built vendor, driver, and user app features",
+      "Implemented map, chat, and real-time functionality",
+      "Handled API integration across app modules",
     ],
-    tech: ["Flutter", "React Native", "Next.js", "TypeScript", "Figma"],
+    tech: [
+      "React Native",
+      "TypeScript",
+      "Redux Toolkit",
+      "WebSockets",
+      "Map",
+      "Web3",
+      "Blockchain",
+      "NFT"
+    ],
   },
   {
-    company: "AppCraft Studio",
-    role: "Mobile App Developer & UI Designer",
-    period: "2021 - 2023",
-    location: "New York, NY",
+    company: "HandBuiltApps",
+    role: "Junior App Developer",
+    period: "Aug 2024 – Mar 2025",
+    location: "Sivakasi, Tamil Nadu",
     type: "Full-time",
     description:
-      "Developed native and cross-platform mobile applications for startups and enterprise clients. Also handled complete web design and front-end development for client websites and landing pages.",
+      "Worked on cross-platform mobile applications using React Native and JavaScript, focusing on core features, API integration, and improving app stability and performance.",
     highlights: [
-      "Delivered 20+ mobile apps and 15+ web projects for clients",
-      "Designed complete UI/UX for iOS and Android from scratch",
-      "Built e-commerce websites with custom checkout flows",
-      "Increased client retention by 40% through quality delivery",
+      "Built and maintained mobile app features using React Native",
+      "Implemented Redux for global state management",
+      "Integrated REST APIs and handled real-time data updates",
+      "Collaborated with team members to improve app performance and stability",
     ],
-    tech: ["Swift", "Kotlin", "React", "Tailwind CSS", "Adobe XD"],
+    tech: ["React Native", "JavaScript", "Redux", "Redux Form", "Reanimated", "REST APIs", "Git"],
   },
-  {
-    company: "PixelWave Agency",
-    role: "Junior Developer & Web Designer",
-    period: "2019 - 2021",
-    location: "Remote",
-    type: "Full-time",
-    description:
-      "Started as a web designer creating responsive websites, then transitioned into mobile development. Gained expertise in both web and mobile ecosystems while working with diverse global clients.",
-    highlights: [
-      "Designed and coded 30+ responsive websites",
-      "Developed first mobile app with 50K+ downloads",
-      "Created brand identities and landing pages for startups",
-      "Mastered Flutter and launched 5 cross-platform apps",
-    ],
-    tech: ["HTML/CSS", "JavaScript", "Flutter", "Firebase", "Figma"],
-  },
-  {
-    company: "Freelance",
-    role: "Mobile & Web Developer",
-    period: "2018 - 2019",
-    location: "Remote",
-    type: "Freelance",
-    description:
-      "Kickstarted my career as a freelance developer building websites and small mobile apps for local businesses. This is where I discovered my passion for creating pixel-perfect digital products.",
-    highlights: [
-      "Built websites for 10+ local businesses",
-      "Developed my first React Native prototype",
-      "Learned UI/UX fundamentals through real projects",
-      "Established a client base that led to agency opportunities",
-    ],
-    tech: ["React", "WordPress", "React Native", "CSS", "Photoshop"],
-  },
+  // {
+  //   company: "PixelWave Agency",
+  //   role: "Junior Developer & Web Designer",
+  //   period: "2019 - 2021",
+  //   location: "Remote",
+  //   type: "Full-time",
+  //   description:
+  //     "Started as a web designer creating responsive websites, then transitioned into mobile development. Gained expertise in both web and mobile ecosystems while working with diverse global clients.",
+  //   highlights: [
+  //     "Designed and coded 30+ responsive websites",
+  //     "Developed first mobile app with 50K+ downloads",
+  //     "Created brand identities and landing pages for startups",
+  //     "Mastered Flutter and launched 5 cross-platform apps",
+  //   ],
+  //   tech: ["HTML/CSS", "JavaScript", "Flutter", "Firebase", "Figma"],
+  // },
+  // {
+  //   company: "Freelance",
+  //   role: "Mobile & Web Developer",
+  //   period: "2018 - 2019",
+  //   location: "Remote",
+  //   type: "Freelance",
+  //   description:
+  //     "Kickstarted my career as a freelance developer building websites and small mobile apps for local businesses. This is where I discovered my passion for creating pixel-perfect digital products.",
+  //   highlights: [
+  //     "Built websites for 10+ local businesses",
+  //     "Developed my first React Native prototype",
+  //     "Learned UI/UX fundamentals through real projects",
+  //     "Established a client base that led to agency opportunities",
+  //   ],
+  //   tech: ["React", "WordPress", "React Native", "CSS", "Photoshop"],
+  // },
 ]
 
 export function ExperienceSection() {
@@ -155,7 +163,7 @@ export function ExperienceSection() {
           </h2>
           <p className="mt-4 text-muted-foreground max-w-2xl mx-auto leading-relaxed font-sans text-pretty">
             My professional journey building mobile apps and designing web
-            experiences for companies and clients worldwide.
+            experiences for companies.
           </p>
         </AnimateOnScroll>
 
@@ -169,17 +177,15 @@ export function ExperienceSection() {
             >
               {/* Timeline dot */}
               <div
-                className={`absolute left-0 top-1 w-[46px] h-[46px] rounded-xl flex items-center justify-center border-2 transition-all duration-700 ${
-                  visibleItems.has(i)
-                    ? "bg-primary border-primary scale-100"
-                    : "bg-card border-border scale-75 opacity-0"
-                }`}
+                className={`absolute left-0 top-1 w-[46px] h-[46px] rounded-xl flex items-center justify-center border-2 transition-all duration-700 ${visibleItems.has(i)
+                  ? "bg-primary border-primary scale-100"
+                  : "bg-card border-border scale-75 opacity-0"
+                  }`}
                 style={{ transitionDelay: `${i * 150}ms` }}
               >
                 <Building2
-                  className={`w-5 h-5 transition-colors duration-500 ${
-                    visibleItems.has(i) ? "text-primary-foreground" : "text-muted-foreground"
-                  }`}
+                  className={`w-5 h-5 transition-colors duration-500 ${visibleItems.has(i) ? "text-primary-foreground" : "text-muted-foreground"
+                    }`}
                 />
               </div>
 
@@ -190,11 +196,10 @@ export function ExperienceSection() {
 
               {/* Card */}
               <div
-                className={`rounded-2xl bg-card border border-border p-6 transition-all duration-700 hover:border-primary/30 ${
-                  visibleItems.has(i)
-                    ? "opacity-100 translate-x-0"
-                    : "opacity-0 translate-x-8"
-                }`}
+                className={`rounded-2xl bg-card border border-border p-6 transition-all duration-700 hover:border-primary/30 ${visibleItems.has(i)
+                  ? "opacity-100 translate-x-0"
+                  : "opacity-0 translate-x-8"
+                  }`}
                 style={{ transitionDelay: `${i * 150 + 100}ms` }}
               >
                 {/* Header */}

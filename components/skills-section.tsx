@@ -23,9 +23,8 @@ function AnimateOnScroll({ children, className = "" }: { children: ReactNode; cl
   return (
     <div
       ref={ref}
-      className={`${className} transition-all duration-700 ${
-        isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
-      }`}
+      className={`${className} transition-all duration-700 ${isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
+        }`}
     >
       {children}
     </div>
@@ -33,23 +32,20 @@ function AnimateOnScroll({ children, className = "" }: { children: ReactNode; cl
 }
 
 const skills = [
-  { name: "Flutter", level: 95 },
-  { name: "React Native", level: 90 },
-  { name: "React / Next.js", level: 92 },
-  { name: "Swift / SwiftUI", level: 88 },
-  { name: "Kotlin", level: 85 },
-  { name: "TypeScript", level: 90 },
+  { name: "React Native", level: 95 },
+  { name: "React", level: 94 },
+  { name: "JavaScript / TypeScript", level: 90 },
   { name: "Tailwind CSS", level: 94 },
+  { name: "WebSockets", level: 85 },
   { name: "HTML / CSS", level: 96 },
   { name: "Firebase", level: 92 },
-  { name: "REST / GraphQL", level: 88 },
+  { name: "Kotlin", level: 65 },
 ]
 
 const tools = [
-  "Xcode", "Android Studio", "VS Code", "Figma",
-  "Git", "CI/CD", "Fastlane", "Firebase",
-  "AWS Amplify", "Supabase", "Vercel", "Netlify",
-  "Adobe XD", "Photoshop", "Codemagic", "TestFlight",
+  "Xcode", "Android Studio", "VS Code",
+  "Git", "Firebase", "Postman",
+  "Flipper",
 ]
 
 function SkillBar({ name, level, delay }: { name: string; level: number; delay: number }) {
@@ -138,8 +134,8 @@ export function SkillsSection() {
               <div className="grid grid-cols-3 gap-4 text-center">
                 {[
                   { value: "50+", label: "Projects" },
-                  { value: "30+", label: "Clients" },
-                  { value: "10M+", label: "Users Served" },
+                  { value: "1.6+", label: "Experience" },
+                  { value: "100K+", label: "Users Served" },
                 ].map((stat) => (
                   <div key={stat.label}>
                     <div className="text-xl font-bold text-primary font-sans">{stat.value}</div>

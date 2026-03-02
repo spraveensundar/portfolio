@@ -35,9 +35,8 @@ function AnimateOnScroll({
   return (
     <div
       ref={ref}
-      className={`${className} transition-all duration-700 ease-out ${
-        isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
-      }`}
+      className={`${className} transition-all duration-700 ease-out ${isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
+        }`}
       style={{ transitionDelay: `${delay}ms` }}
     >
       {children}
@@ -100,7 +99,11 @@ export function ProjectsSection() {
                         {project.title}
                       </h3>
                       <div className="flex items-center gap-1">
-                        <Star className="w-3.5 h-3.5 text-primary fill-primary" />
+                        {
+                          project.rating && (
+                            <Star className="w-3.5 h-3.5 text-primary fill-primary" />
+                          )
+                        }
                         <span className="text-sm text-muted-foreground font-sans">
                           {project.rating}
                         </span>
@@ -110,8 +113,8 @@ export function ProjectsSection() {
                       {project.description}
                     </p>
                     <div className="flex items-center justify-between">
-                      <div className="flex flex-wrap gap-2">
-                        {project.tags.map((tag) => (
+                      <div className="flex  flex-wrap gap-2">
+                        {project.tags.slice(0, 3).map((tag) => (
                           <span
                             key={tag}
                             className="px-2.5 py-1 rounded-md bg-primary/10 text-primary text-xs font-medium font-mono"
@@ -119,8 +122,13 @@ export function ProjectsSection() {
                             {tag}
                           </span>
                         ))}
+                        {project.tags.length > 3 && (
+                          <span className="px-2.5 py-1 rounded-md bg-muted text-xs font-medium">
+                            +{project.tags.length - 3}
+                          </span>
+                        )}
                       </div>
-                      <span className="text-xs text-muted-foreground font-sans">
+                      <span className="text-xs text-muted-foreground font-sans whitespace-nowrap">
                         {project.downloads}
                       </span>
                     </div>

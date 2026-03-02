@@ -18,7 +18,7 @@ export async function generateMetadata({
   const project = getProjectBySlug(slug)
   if (!project) return { title: "Project Not Found" }
   return {
-    title: `${project.title} | DevFolio`,
+    title: `${project.title}`,
     description: project.description,
   }
 }

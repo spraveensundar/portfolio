@@ -4,7 +4,7 @@ import { ParticleBackground } from "@/components/particle-background"
 import { ProjectsPageNav } from "@/components/projects-page-nav"
 
 export const metadata: Metadata = {
-  title: "All Projects | DevFolio",
+  title: "All Projects",
   description:
     "Browse all mobile and web projects built by a professional app developer.",
 }
